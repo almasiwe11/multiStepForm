@@ -1,16 +1,20 @@
+import { useSelector } from "react-redux"
+import { RootState } from "../RootState"
 import { Step } from "../Types/Types"
 
 type Props = {
   step: Step
-  fill: boolean
 }
 
-function Stepp({ step, fill }: Props) {
+function Stepp({ step }: Props) {
+  const { step: stepState } = useSelector((state: RootState) => state.form)
   return (
     <div className="flex items-center gap-4">
       <div
         className={`${
-          fill ? "bg-gray-200 text-denim" : "text-white"
+          stepState === step.stepNumber
+            ? "bg-gray-200 text-denim"
+            : "text-white"
         } h-9 w-9 border border-white rounded-full flex-center`}
       >
         {step.stepNumber}

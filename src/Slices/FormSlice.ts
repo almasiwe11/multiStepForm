@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { initialState, TpersonalInfo } from "../Types/Types"
 
 const initialState: initialState = {
+  next: false,
   step: 1,
   plan: {
     name: "arcade",
@@ -37,14 +38,29 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     nextStep(state) {
-      return { ...state }
+      state.next = true
+    },
+
+    prevStep(state) {
+      state.step = state.step - 1
+      state.next = false
     },
 
     collectPersonalInfo(state, action: PayloadAction<TpersonalInfo>) {
       state.personalInfo = action.payload
+      state.step = state.step + 1
+      state.next = false
+    },
+
+    chosePlan(state, action) {
+      state.yearly = action.payload.yearly
+      state.plan = action.payload.plan
+      state.step = state.step + 1
+      state.next = false
     },
   },
 })
 
-export const { nextStep, collectPersonalInfo } = formSlice.actions
+export const { nextStep, collectPersonalInfo, chosePlan, prevStep } =
+  formSlice.actions
 export default formSlice.reducer
