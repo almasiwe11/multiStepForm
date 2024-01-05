@@ -1,9 +1,13 @@
-import Hero from "./Components/Hero/Hero"
+import Sidebar from "./Components/Sidebar"
+import Step1 from "./Components/Step1"
+import Controller from "./Components/Controller"
 
 function App() {
   return (
-    <div className="text-blue-400 text-4xl font-bold">
-      <Hero />
+    <div className="lg:p-6">
+      <Sidebar />
+      <Step1 />
+      <Controller />
     </div>
   )
 }

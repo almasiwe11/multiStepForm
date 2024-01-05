@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        "sidebar-mobile": "url('/bg-sidebar-mobile.svg')",
+        "sidebar-desktop": "url('/bg-sidebar-desktop.svg')",
+      },
+    },
     screens: {
       sm: "480px",
       md: "768px",
