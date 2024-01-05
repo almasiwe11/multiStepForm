@@ -3,7 +3,7 @@ import { initialState, TpersonalInfo } from "../Types/Types"
 
 const initialState: initialState = {
   next: false,
-  step: 2,
+  step: 1,
   plan: {
     name: "arcade",
     priceMonth: 9,

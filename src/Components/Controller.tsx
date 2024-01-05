@@ -28,7 +28,7 @@ function Controller() {
       <a href="">Go Back</a>
       <button
         type="submit"
-        form={"form"}
+        form={form}
         className="bg-denim text-white flex-center p-2.5 px-5 rounded-lg"
       >
         Next Step

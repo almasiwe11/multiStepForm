@@ -15,66 +15,68 @@ function Step2() {
   const [currentPlan, setCurrentPlan] = useState(0)
   const [yearly, setYearly] = useState(false)
 
-  function handleNext() {
+  function handleNext(e) {
+    e.preventDefault()
+    console.log("qoiwejfpqwejfpqweifj")
     dispatch(chosePlan({ yearly: yearly, plan: plans[currentPlan] }))
   }
 
   return (
-    <form id="step2" onSubmit={handleNext} action="">
-      <StepStyle>
-        <StepInfo
-          name="Select your plan"
-          detail="You have the option of monthly or yearly billing."
-        />
-        <div className="flex flex-col lg:flex-row gap-3 mt-10">
-          <Plan
-            onClick={() => setCurrentPlan(0)}
-            image={arcade}
-            name="Arcade"
-            altImage="arcade image"
-            yearly={yearly}
-            price={9}
-            currentPlan={currentPlan}
-          />
-          <Plan
-            image={advanced}
-            name="Advanced"
-            altImage="advanced image"
-            price={12}
-            yearly={yearly}
-            onClick={() => setCurrentPlan(1)}
-            currentPlan={currentPlan}
-          />
-          <Plan
-            image={pro}
-            name="Pro"
-            altImage="pro image"
-            price={15}
-            yearly={yearly}
-            onClick={() => setCurrentPlan(2)}
-            currentPlan={currentPlan}
-          />
-        </div>
+    <StepStyle>
+      <StepInfo
+        name="Select your plan"
+        detail="You have the option of monthly or yearly billing."
+      />
+      <div className="flex flex-col lg:flex-row gap-3 mt-10">
+        <form id="step2" onSubmit={handleNext}></form>
 
-        <div className="text-denim flex mt-12 gap-4 justify-center">
-          <div
-            className={`${
-              yearly ? "text-gray-300" : "text-denim font-bold"
-            } duration-300 ease-in-out`}
-          >
-            Monthly
-          </div>
-          <Toggler yearly={yearly} setYearly={setYearly} />
-          <div
-            className={`${
-              !yearly ? "text-gray-300" : "text-denim font-bold"
-            } duration-300 ease-in-out`}
-          >
-            Yearly
-          </div>
+        <Plan
+          onClick={() => setCurrentPlan(0)}
+          image={arcade}
+          name="Arcade"
+          altImage="arcade image"
+          yearly={yearly}
+          price={9}
+          currentPlan={currentPlan}
+        />
+        <Plan
+          image={advanced}
+          name="Advanced"
+          altImage="advanced image"
+          price={12}
+          yearly={yearly}
+          onClick={() => setCurrentPlan(1)}
+          currentPlan={currentPlan}
+        />
+        <Plan
+          image={pro}
+          name="Pro"
+          altImage="pro image"
+          price={15}
+          yearly={yearly}
+          onClick={() => setCurrentPlan(2)}
+          currentPlan={currentPlan}
+        />
+      </div>
+
+      <div className="text-denim flex mt-12 gap-4 justify-center">
+        <div
+          className={`${
+            yearly ? "text-gray-300" : "text-denim font-bold"
+          } duration-300 ease-in-out`}
+        >
+          Monthly
         </div>
-      </StepStyle>
-    </form>
+        <Toggler yearly={yearly} setYearly={setYearly} />
+        <div
+          className={`${
+            !yearly ? "text-gray-300" : "text-denim font-bold"
+          } duration-300 ease-in-out`}
+        >
+          Yearly
+        </div>
+      </div>
+    </StepStyle>
   )
 }
 
