@@ -4,8 +4,7 @@ const personalInfo = z.object({
   name: z.string(),
   email: z.string().email(),
   phone: z.string().refine((value) => /^\+\d{1,3}-\d{1,14}$/.test(value), {
-    message:
-      "Invalid phone number format. Please use the format: +1-1234567890",
+    message: "Please use the format: +1-1234567890",
   }),
 })
 type TpersonalInfo = z.infer<typeof personalInfo>
@@ -17,10 +16,15 @@ type Step = {
 
 type initialState = {
   step: number
-  plan: "arcade" | "advanced" | "pro"
+  plan: Plan
   yearly: boolean
   personalInfo: TpersonalInfo
   addOns: Addon[]
+}
+
+type Plan = {
+  name: string
+  priceMonth: number
 }
 
 type Addon = {
