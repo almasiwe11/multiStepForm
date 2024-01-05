@@ -10,8 +10,8 @@ function Stepp({ step, fill }: Props) {
     <div className="flex items-center gap-4">
       <div
         className={`${
-          fill && "bg-gray-200 text-black"
-        } h-9 w-9 border border-white rounded-full flex-center text-white`}
+          fill ? "bg-gray-200 text-denim" : "text-white"
+        } h-9 w-9 border border-white rounded-full flex-center`}
       >
         {step.stepNumber}
       </div>

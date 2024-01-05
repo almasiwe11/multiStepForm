@@ -7,6 +7,12 @@ export default {
         "sidebar-mobile": "url('/bg-sidebar-mobile.svg')",
         "sidebar-desktop": "url('/bg-sidebar-desktop.svg')",
       },
+      colors: {
+        denim: "#022959",
+        border: "#D6D9E6",
+        page: "#F2F2F2",
+        bg: "#EFF5FF",
+      },
     },
     screens: {
       sm: "480px",
