@@ -18,7 +18,6 @@ function Step1() {
   })
 
   function onSubmit(data: TpersonalInfo) {
-    dispatch(nextStep())
     dispatch(collectPersonalInfo(data))
     reset()
   }
@@ -34,7 +33,7 @@ function Step1() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        id="personal-info"
+        id="step1"
         className="flex flex-col gap-5"
       >
         <div className="mt-10 flex flex-col gap-2">

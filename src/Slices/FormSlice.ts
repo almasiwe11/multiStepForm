@@ -3,7 +3,7 @@ import { initialState, TpersonalInfo } from "../Types/Types"
 
 const initialState: initialState = {
   next: false,
-  step: 1,
+  step: 2,
   plan: {
     name: "arcade",
     priceMonth: 9,
@@ -49,18 +49,22 @@ const formSlice = createSlice({
     collectPersonalInfo(state, action: PayloadAction<TpersonalInfo>) {
       state.personalInfo = action.payload
       state.step = state.step + 1
-      state.next = false
+      state.next = true
     },
 
     chosePlan(state, action) {
       state.yearly = action.payload.yearly
       state.plan = action.payload.plan
       state.step = state.step + 1
+      state.next = true
+    },
+
+    stepDone(state) {
       state.next = false
     },
   },
 })
 
-export const { nextStep, collectPersonalInfo, chosePlan, prevStep } =
+export const { nextStep, collectPersonalInfo, chosePlan, prevStep, stepDone } =
   formSlice.actions
 export default formSlice.reducer
