@@ -5,7 +5,7 @@ const initialState: initialState = {
   next: false,
   step: 1,
   plan: {
-    name: "arcade",
+    name: "Arcade",
     priceMonth: 9,
   },
   yearly: false,
@@ -45,20 +45,17 @@ const formSlice = createSlice({
       state.step = state.step - 1
       state.next = false
     },
-
     collectPersonalInfo(state, action: PayloadAction<TpersonalInfo>) {
       state.personalInfo = action.payload
       state.step = state.step + 1
       state.next = true
     },
-
     chosePlan(state, action) {
       state.yearly = action.payload.yearly
       state.plan = action.payload.plan
       state.step = state.step + 1
       state.next = true
     },
-
     stepDone(state) {
       state.next = false
     },

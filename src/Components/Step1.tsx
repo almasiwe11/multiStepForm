@@ -3,11 +3,15 @@ import StepInfo from "./StepInfo"
 import StepStyle from "./StepStyle"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TpersonalInfo, personalInfo } from "../Types/Types"
-import { useDispatch } from "react-redux"
-import { collectPersonalInfo, nextStep } from "../Slices/FormSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { collectPersonalInfo } from "../Slices/FormSlice"
+import { RootState } from "../RootState"
 
 function Step1() {
   const dispatch = useDispatch()
+  const { personalInfo: reduxPersonalInfo } = useSelector(
+    (state: RootState) => state.form
+  )
   const {
     reset,
     register,
@@ -45,6 +49,7 @@ function Step1() {
           </div>
           <input
             {...register("name")}
+            defaultValue={reduxPersonalInfo.name}
             type="text"
             name="name"
             className={`${inputStyle} ${
@@ -64,6 +69,7 @@ function Step1() {
           <input
             {...register("email")}
             type="text"
+            defaultValue={reduxPersonalInfo.email}
             name="email"
             className={`${inputStyle}  ${
               errors.email && `border border-red-400`
@@ -81,6 +87,7 @@ function Step1() {
           <input
             {...register("phone")}
             type="text"
+            defaultValue={reduxPersonalInfo.phone}
             name="phone"
             className={`${inputStyle}  ${
               errors.phone && `border border-red-400`

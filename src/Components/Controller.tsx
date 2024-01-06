@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../RootState"
 import { useNavigate } from "react-router"
-import { stepDone } from "../Slices/FormSlice"
+import { prevStep, stepDone } from "../Slices/FormSlice"
 import { useEffect } from "react"
 
 function Controller() {
@@ -14,9 +14,14 @@ function Controller() {
 
   function handleNext() {
     if (!next) return
-    console.log("wtff")
     navigate(`/step${step}`)
     dispatch(stepDone())
+  }
+
+  function handleBack() {
+    if (step === 1) return
+    dispatch(prevStep())
+    navigate(`/step${step - 1}`)
   }
 
   useEffect(() => {
@@ -25,7 +30,11 @@ function Controller() {
 
   return (
     <div className="flex py-6 lg:py-3 justify-between items-center px-7 bg-white">
-      <a href="">Go Back</a>
+      {step > 1 && (
+        <a onClick={handleBack} className="cursor-pointer">
+          Go Back
+        </a>
+      )}
       <button
         type="submit"
         form={form}

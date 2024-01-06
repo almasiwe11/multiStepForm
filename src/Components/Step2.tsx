@@ -7,17 +7,21 @@ import pro from "/icon-pro.svg"
 import { useState } from "react"
 import Plan from "./Plan"
 import Toggler from "./Toggler"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { chosePlan } from "../Slices/FormSlice"
+import { RootState } from "../RootState"
 
 function Step2() {
   const dispatch = useDispatch()
-  const [currentPlan, setCurrentPlan] = useState(0)
-  const [yearly, setYearly] = useState(false)
+  const { yearly: reduxYearly, plan } = useSelector(
+    (state: RootState) => state.form
+  )
+  const reduxPlan = plans.findIndex((basePlan) => basePlan.name === plan.name)
+  const [currentPlan, setCurrentPlan] = useState(reduxPlan)
+  const [yearly, setYearly] = useState(reduxYearly)
 
-  function handleNext(e) {
+  function handleNext(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    console.log("qoiwejfpqwejfpqweifj")
     dispatch(chosePlan({ yearly: yearly, plan: plans[currentPlan] }))
   }
 

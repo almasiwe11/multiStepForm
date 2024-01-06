@@ -15,7 +15,7 @@ function App() {
           <Sidebar />
           <div className="lg:px-20 flex w-full flex-col justify-between h-full lg:h-[568px] ">
             <Routes>
-              <Route index element={<Step1 />} />
+              <Route index path="step1" element={<Step1 />} />
               <Route path="step2" element={<Step2 />} />
               <Route path="step3" element={<Step3 />} />
             </Routes>

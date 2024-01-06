@@ -1,13 +1,14 @@
 import StepInfo from "./StepInfo"
+import StepStyle from "./StepStyle"
 
 function Step3() {
   return (
-    <div>
+    <StepStyle>
       <StepInfo
         name="Pick add-ons"
         detail="Add-ons help enhance your gaming experience."
       />
-    </div>
+    </StepStyle>
   )
 }
 
