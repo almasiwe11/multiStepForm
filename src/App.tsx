@@ -1,8 +1,6 @@
 import Sidebar from "./Components/Sidebar"
 import Step1 from "./Components/Step1"
 import Controller from "./Components/Controller"
-import { useSelector } from "react-redux"
-import { RootState } from "./RootState"
 import Step2 from "./Components/Step2"
 import Step3 from "./Components/Step3"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
