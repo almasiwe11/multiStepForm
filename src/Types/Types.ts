@@ -21,7 +21,7 @@ type initialState = {
   plan: Plan
   yearly: boolean
   personalInfo: TpersonalInfo
-  addOns: Addon[]
+  addOns: TAddon[]
 }
 
 type Plan = {
@@ -29,11 +29,14 @@ type Plan = {
   priceMonth: number
 }
 
-type Addon = {
+type TAddon = {
   name: string
   priceMonth: number
-  included: boolean
+}
+
+type AddonData = TAddon & {
+  detail: string
 }
 
 export { personalInfo }
-export type { Step, initialState, TpersonalInfo, Plan }
+export type { Step, initialState, TpersonalInfo, Plan, AddonData, TAddon }

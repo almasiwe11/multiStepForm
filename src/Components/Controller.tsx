@@ -11,6 +11,7 @@ function Controller() {
 
   let form = "step1"
   if (step === 2) form = "step2"
+  if (step === 3) form = "step3"
 
   function handleNext() {
     if (!next) return

@@ -14,23 +14,7 @@ const initialState: initialState = {
     email: "",
     phone: "",
   },
-  addOns: [
-    {
-      name: "Online Service",
-      priceMonth: 1,
-      included: false,
-    },
-    {
-      name: "Larger Storage",
-      priceMonth: 2,
-      included: false,
-    },
-    {
-      name: "Cuztomizable Profile",
-      priceMonth: 2,
-      included: false,
-    },
-  ],
+  addOns: [],
 }
 
 const formSlice = createSlice({
@@ -59,9 +43,19 @@ const formSlice = createSlice({
     stepDone(state) {
       state.next = false
     },
+    choseAddons(state, action) {
+      state.addOns = action.payload
+      state.step = state.step + 1
+    },
   },
 })
 
-export const { nextStep, collectPersonalInfo, chosePlan, prevStep, stepDone } =
-  formSlice.actions
+export const {
+  nextStep,
+  collectPersonalInfo,
+  choseAddons,
+  chosePlan,
+  prevStep,
+  stepDone,
+} = formSlice.actions
 export default formSlice.reducer
