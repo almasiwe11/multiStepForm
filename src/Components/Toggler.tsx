@@ -1,12 +1,12 @@
-import { useState } from "react"
-
 type Props = {
   yearly: boolean
   setYearly: React.Dispatch<React.SetStateAction<boolean>>
+  onClick: () => void
 }
 
-const Toggler = ({ yearly, setYearly }: Props) => {
+const Toggler = ({ yearly, setYearly, onClick }: Props) => {
   function onToggle() {
+    onClick()
     setYearly((prev) => !prev)
   }
 

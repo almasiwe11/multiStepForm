@@ -4,6 +4,7 @@ import { useNavigate } from "react-router"
 import { RootState } from "../RootState"
 import StepStyle from "./StepStyle"
 import StepInfo from "./StepInfo"
+import Summary from "./Summary"
 
 function Step4() {
   const navigate = useNavigate()
@@ -17,9 +18,10 @@ function Step4() {
   return (
     <StepStyle>
       <StepInfo
-        name="finishing up"
+        name="Finishing up"
         detail="Double-check everything looks OK before confirming."
       />
+      <Summary />
     </StepStyle>
   )
 }

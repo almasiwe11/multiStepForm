@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 import Plan from "./Plan"
 import Toggler from "./Toggler"
 import { useDispatch, useSelector } from "react-redux"
-import { chosePlan } from "../Slices/FormSlice"
+import { changePriceToggle, chosePlan } from "../Slices/FormSlice"
 import { RootState } from "../RootState"
 import { useNavigate } from "react-router"
 
@@ -27,6 +27,12 @@ function Step2() {
   function handleNext(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     dispatch(chosePlan({ yearly: yearly, plan: plans[currentPlan] }))
+  }
+
+  function hanldeToggle() {
+    yearly
+      ? dispatch(changePriceToggle("monthly"))
+      : dispatch(changePriceToggle("yearly"))
   }
 
   useEffect(() => {
@@ -81,7 +87,7 @@ function Step2() {
         >
           Monthly
         </div>
-        <Toggler yearly={yearly} setYearly={setYearly} />
+        <Toggler onClick={hanldeToggle} yearly={yearly} setYearly={setYearly} />
         <div
           className={`${
             !yearly ? "text-gray-300" : "text-denim font-bold"

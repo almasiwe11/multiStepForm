@@ -12,6 +12,8 @@ export default {
         border: "#D6D9E6",
         page: "#F2F2F2",
         bg: "#EFF5FF",
+        grayish: "#D6D9E6",
+        purple: "#483EFF",
       },
     },
     screens: {

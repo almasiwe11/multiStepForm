@@ -3,7 +3,7 @@ import Step1 from "./Components/Step1"
 import Controller from "./Components/Controller"
 import Step2 from "./Components/Step2"
 import Step3 from "./Components/Step3"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Step4 from "./Components/Step4"
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
               <Route path="step2" element={<Step2 />} />
               <Route path="step3" element={<Step3 />} />
               <Route path="step4" element={<Step4 />} />
+              <Route path="*" element={<Navigate to="/step1" />} />
             </Routes>
             <Controller />
           </div>

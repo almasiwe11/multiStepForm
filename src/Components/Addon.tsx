@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { AddonData, TAddon } from "../Types/Types"
+import { useSelector } from "react-redux"
+import { RootState } from "../RootState"
 
 type Props = {
   addon: AddonData
@@ -9,13 +11,17 @@ type Props = {
 
 function Addon({ addon, setAddons, reduxChecked }: Props) {
   const [checked, setChecked] = useState(reduxChecked)
+  const { yearly } = useSelector((state: RootState) => state.form)
 
   function handleClick() {
     setChecked((prev) => !prev)
     if (!checked) {
       setAddons((prev) => [
         ...prev,
-        { name: addon.name, priceMonth: addon.priceMonth },
+        {
+          name: addon.name,
+          priceMonth: !yearly ? addon.priceMonth : addon.priceMonth * 10,
+        },
       ])
     } else {
       setAddons((prev) => prev.filter((add) => add.name !== addon.name))
@@ -35,7 +41,10 @@ function Addon({ addon, setAddons, reduxChecked }: Props) {
         <span className="font-bold text-lg">{addon.name}</span>
         <span className="text-gray-400">{addon.detail}</span>
       </div>
-      <div className="text-denim ml-auto">+${addon.priceMonth}/mo</div>
+      <div className="text-denim ml-auto">
+        +${yearly ? addon.priceMonth * 10 : addon.priceMonth}/
+        {yearly ? "yr" : "mo"}
+      </div>
     </div>
   )
 }

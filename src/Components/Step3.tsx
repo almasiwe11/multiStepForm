@@ -5,7 +5,7 @@ import { RootState } from "../RootState"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import Addon from "./Addon"
-import { addons } from "../Data/Addons"
+import { addons as dataAddons } from "../Data/Addons"
 import { TAddon } from "../Types/Types"
 import { choseAddons, nextStep } from "../Slices/FormSlice"
 
@@ -15,7 +15,7 @@ function Step3() {
   const { step, addOns: reduxAddons } = useSelector(
     (state: RootState) => state.form
   )
-  const [addOns, setAddons] = useState<TAddon[]>([])
+  const [addOns, setAddons] = useState<TAddon[]>(reduxAddons)
 
   useEffect(() => {
     if (step !== 3) {
@@ -37,7 +37,7 @@ function Step3() {
       />
       <form id="step3" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5 mt-8">
-          {addons.map((bonus) => (
+          {dataAddons.map((bonus) => (
             <Addon
               reduxChecked={reduxAddons.some((add) => add.name === bonus.name)}
               key={bonus.name}

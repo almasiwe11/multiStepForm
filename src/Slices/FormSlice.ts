@@ -47,6 +47,24 @@ const formSlice = createSlice({
       state.addOns = action.payload
       state.step = state.step + 1
     },
+    changeStep(state, action) {
+      state.step = action.payload
+    },
+    changePriceToggle(state, action) {
+      if (state.addOns.length === 0) return state
+
+      if (action.payload === "yearly") {
+        state.addOns = state.addOns.map((add) => ({
+          ...add,
+          priceMonth: add.priceMonth * 10,
+        }))
+      } else if (action.payload === "monthly") {
+        state.addOns = state.addOns.map((add) => ({
+          ...add,
+          priceMonth: add.priceMonth / 10,
+        }))
+      }
+    },
   },
 })
 
@@ -57,5 +75,7 @@ export const {
   chosePlan,
   prevStep,
   stepDone,
+  changeStep,
+  changePriceToggle,
 } = formSlice.actions
 export default formSlice.reducer
