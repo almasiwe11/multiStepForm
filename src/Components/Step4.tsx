@@ -10,7 +10,7 @@ function Step4() {
   const navigate = useNavigate()
   const { step } = useSelector((state: RootState) => state.form)
   useEffect(() => {
-    if (step !== 3) {
+    if (step === 1) {
       navigate(`/step${step}`)
     }
   }, [step, navigate])

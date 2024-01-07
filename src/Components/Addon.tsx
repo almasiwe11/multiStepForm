@@ -29,10 +29,12 @@ function Addon({ addon, setAddons, reduxChecked }: Props) {
   }
 
   return (
-    <div className="border border-border rounded-xl p-2 px-4 flex items-center gap-4">
+    <div
+      onClick={handleClick}
+      className="border cursor-pointer border-border rounded-xl p-2 px-4 flex items-center gap-4"
+    >
       <input
         checked={checked}
-        onClick={handleClick}
         type="checkbox"
         id="myCheckbox"
         className="form-checkbox h-5 w-5 accent-indigo-600 transition cursor-pointer duration-150 ease-in-out"

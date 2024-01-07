@@ -17,11 +17,11 @@ function Step3() {
   )
   const [addOns, setAddons] = useState<TAddon[]>(reduxAddons)
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (step !== 3) {
       navigate(`/step${step}`)
     }
-  }, [step, navigate])
+  }, [step, navigate]) */
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()

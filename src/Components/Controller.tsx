@@ -35,12 +35,10 @@ function Controller() {
   if (step === 5) return
 
   return (
-    <div className="flex py-6 lg:py-3 justify-between items-center px-7 bg-white">
-      {step > 1 && (
-        <a onClick={handleBack} className="cursor-pointer">
-          Go Back
-        </a>
-      )}
+    <div className="flex py-6 absolute bottom-0 lg:static w-full lg:w-auto lg:py-3 justify-between items-center px-7 bg-white">
+      <a onClick={handleBack} className="cursor-pointer">
+        {step > 1 && "Go Back"}
+      </a>
       <button
         type="submit"
         form={form}

@@ -35,11 +35,11 @@ function Step2() {
       : dispatch(changePriceToggle("yearly"))
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (step !== 2) {
       navigate(`/step${step}`)
     }
-  }, [step, navigate])
+  }, [step, navigate]) */
 
   return (
     <StepStyle>
