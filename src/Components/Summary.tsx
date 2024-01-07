@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../RootState"
 import { useNavigate } from "react-router"
-import { changeStep } from "../Slices/FormSlice"
+import { changeStep, finished } from "../Slices/FormSlice"
 
 function Summary() {
   const { plan, addOns, yearly } = useSelector((state: RootState) => state.form)
@@ -14,8 +14,15 @@ function Summary() {
       return acc + each.priceMonth
     }, 0)
   }
+
+  function hanldeSubmit(e: React.MouseEvent<HTMLFormElement, MouseEvent>) {
+    e.preventDefault()
+    dispatch(finished())
+  }
+
   return (
     <div className="flex flex-col gap-5 mt-5">
+      <form id="step4" onSubmit={hanldeSubmit}></form>
       <div className="bg-bg rounded-lg">
         <div className="flex flex-col p-3 mt-6">
           <div className="flex justify-between">

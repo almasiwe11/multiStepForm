@@ -65,6 +65,11 @@ const formSlice = createSlice({
         }))
       }
     },
+
+    finished(state) {
+      state.next = true
+      state.step = state.step + 1
+    },
   },
 })
 
@@ -77,5 +82,6 @@ export const {
   stepDone,
   changeStep,
   changePriceToggle,
+  finished,
 } = formSlice.actions
 export default formSlice.reducer

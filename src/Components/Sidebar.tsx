@@ -6,6 +6,7 @@ function Sidebar() {
     { stepNumber: 2, stepName: "select plan" },
     { stepNumber: 3, stepName: "add ons" },
     { stepNumber: 4, stepName: "summary" },
+    { stepNumber: 5, stepName: "done" },
   ]
   return (
     <div className="lg:rounded-xl bg-sidebar-mobile h-[230px] px-10 lg:h-[568px] lg:bg-sidebar-desktop lg:min-w-[274px]  bg-no-repeat bg-cover">

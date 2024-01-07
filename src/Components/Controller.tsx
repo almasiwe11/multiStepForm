@@ -12,6 +12,9 @@ function Controller() {
   let form = "step1"
   if (step === 2) form = "step2"
   if (step === 3) form = "step3"
+  if (step === 4) form = "step4"
+
+  console.log(form)
 
   function handleNext() {
     if (!next) return
@@ -28,6 +31,8 @@ function Controller() {
   useEffect(() => {
     if (next) handleNext()
   }, [next])
+
+  if (step === 5) return
 
   return (
     <div className="flex py-6 lg:py-3 justify-between items-center px-7 bg-white">
