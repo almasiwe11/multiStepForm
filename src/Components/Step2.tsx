@@ -4,25 +4,23 @@ import { plans } from "../Data/Plans"
 import arcade from "/icon-arcade.svg"
 import advanced from "/icon-advanced.svg"
 import pro from "/icon-pro.svg"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Plan from "./Plan"
 import Toggler from "./Toggler"
 import { useDispatch, useSelector } from "react-redux"
 import { changePriceToggle, chosePlan } from "../Slices/FormSlice"
 import { RootState } from "../RootState"
-import { useNavigate } from "react-router"
+import useRestart from "../Hooks/useRestart"
 
 function Step2() {
+  useRestart()
   const dispatch = useDispatch()
-  const {
-    yearly: reduxYearly,
-    plan,
-    step,
-  } = useSelector((state: RootState) => state.form)
+  const { yearly: reduxYearly, plan } = useSelector(
+    (state: RootState) => state.form
+  )
   const reduxPlan = plans.findIndex((basePlan) => basePlan.name === plan.name)
   const [currentPlan, setCurrentPlan] = useState(reduxPlan)
   const [yearly, setYearly] = useState(reduxYearly)
-  const navigate = useNavigate()
 
   function handleNext(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -34,12 +32,6 @@ function Step2() {
       ? dispatch(changePriceToggle("monthly"))
       : dispatch(changePriceToggle("yearly"))
   }
-
-  /* useEffect(() => {
-    if (step !== 2) {
-      navigate(`/step${step}`)
-    }
-  }, [step, navigate]) */
 
   return (
     <StepStyle>

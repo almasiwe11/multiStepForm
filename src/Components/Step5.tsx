@@ -1,18 +1,9 @@
-import { useEffect } from "react"
 import StepStyle from "./StepStyle"
 import thank from "/icon-thank-you.svg"
-import { useSelector } from "react-redux"
-import { RootState } from "../RootState"
-import { useNavigate } from "react-router"
+import useRestart from "../Hooks/useRestart"
 
 function Step5() {
-  const navigate = useNavigate()
-  const { step } = useSelector((state: RootState) => state.form)
-  /* useEffect(() => {
-    if (step !== 5) {
-      navigate(`/step${step}`)
-    }
-  }, [step, navigate]) */
+  useRestart()
 
   return (
     <div className="flex-center h-full">
